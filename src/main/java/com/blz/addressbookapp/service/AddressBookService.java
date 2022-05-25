@@ -2,36 +2,48 @@ package com.blz.addressbookapp.service;
 
 import com.blz.addressbookapp.dto.AddressBookDTO;
 import com.blz.addressbookapp.model.AddressBookData;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class AddressBookService implements IAddressBookService {
+    private List<AddressBookData> addressBookDataList=new ArrayList<>();
+
     @Override
-    public List<AddressBookData> getEmployeePayrollData() {
-        List<AddressBookData> employeePayrolDataList=new ArrayList<>();
-        employeePayrolDataList.add(new AddressBookData(1,new AddressBookDTO("Vinayak","Patil",
-                "8765432145","developer@gmail.com","bijapur","karnatak",586109)));
-        return employeePayrolDataList;
+    public List<AddressBookData> getAddressBookData() {
+        return addressBookDataList;
     }
 
     @Override
-    public AddressBookData getEmployeePayrollDataById(int id) {
-        AddressBookData addressBookData=new AddressBookData(2,new AddressBookDTO("priya","madiwalar",
-                "8765432198","developer@gmail.com","bijapur","karnatak",586109));
-        return addressBookData;
+    public AddressBookData getAddressBookDataById(int id) {
+        return addressBookDataList.get(id-1);
+    }
+    @Override
+    public AddressBookData updateAddressBookData(AddressBookDTO addressBookDTO) {
+        return null;
     }
 
     @Override
     public AddressBookData createAddressBookData(AddressBookDTO addressBookDTO) {
-        AddressBookData employeePayrolData=new AddressBookData(1,addressBookDTO);
-        return employeePayrolData;
+        AddressBookData addressBookData = new AddressBookData(addressBookDataList.size()+1,addressBookDTO);
+        addressBookDataList.add(addressBookData);
+        return addressBookData;
     }
 
     @Override
-    public AddressBookData updateAddressBookData(AddressBookDTO addressBookDTO) {
-        AddressBookData employeePayrolData=new AddressBookData(1,addressBookDTO);
-        return employeePayrolData;
+    public AddressBookData updateAddressBookData(int id,AddressBookDTO addressBookDTO) {
+        AddressBookData addressBookData=this.getAddressBookDataById(id);
+        addressBookData.setfName(addressBookDTO.getfName());
+        addressBookData.setlName(addressBookDTO.getlName());
+        addressBookData.setPhonenumber(addressBookDTO.getPhonenumber());
+        addressBookData.setEmail(addressBookDTO.getEmail());
+        addressBookData.setCity(addressBookDTO.getCity());
+        addressBookData.setState(addressBookDTO.getState());
+        addressBookData.setZipcode(addressBookDTO.getZipcode());
+        addressBookDataList.set(id-1,addressBookData);
+        return addressBookData;
     }
 
     @Override

@@ -6,10 +6,12 @@ import com.blz.addressbookapp.model.AddressBookData;
 import java.util.List;
 
 public interface IAddressBookService {
-    List<AddressBookData> getEmployeePayrollData();
-    AddressBookData getEmployeePayrollDataById(int id);
-    AddressBookData createAddressBookData(AddressBookDTO addressBookDTO);
+    List<AddressBookData> getAddressBookData();
+    AddressBookData getAddressBookDataById(int id);
     AddressBookData updateAddressBookData(AddressBookDTO addressBookDTO);
-    public void deleteEmployeePayrollData(int id);
+    AddressBookData createAddressBookData(AddressBookDTO addressBookDTO);
+    AddressBookData updateAddressBookData(int id,AddressBookDTO addressBookDTO);
+    void deleteEmployeePayrollData(int id);
 }
+
 

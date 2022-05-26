@@ -19,6 +19,7 @@ public class AddressBookController {
     @Autowired
     private IAddressBookService iAddressBookService;
 
+    //get addressbook details
     @RequestMapping("/get")
     public ResponseEntity<ResponseDTO> getAddressbookData(){
         List<AddressBookData> addressBookData =iAddressBookService.getAddressBookData();
@@ -26,6 +27,7 @@ public class AddressBookController {
         return  new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
+    //get addressbook details by id
     @GetMapping("/{id}")
     public ResponseEntity<ResponseDTO> getAddressbookData(@PathVariable int id){
         AddressBookData addressBookData=iAddressBookService.getAddressBookDataById(id);
@@ -33,6 +35,7 @@ public class AddressBookController {
         return  new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
+    //create addressbook details by RequestBody
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> addAddressBookData(@RequestBody AddressBookDTO addressBookDTO){
         AddressBookData addressBookData=iAddressBookService.createAddressBookData(addressBookDTO);
@@ -40,6 +43,7 @@ public class AddressBookController {
         return  new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
+    //update addressbook details by id with RequestBody
     @PutMapping("/update/{id}")
     public ResponseEntity<ResponseDTO> updateAddressBookData(@PathVariable int id, @RequestBody AddressBookDTO addressBookDTO){
         AddressBookData addressBookData = iAddressBookService.updateAddressBookData(id,addressBookDTO);
@@ -47,6 +51,7 @@ public class AddressBookController {
         return  new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
+    // Delet addressbook details by id
     @DeleteMapping("/{id}")
     public ResponseEntity<ResponseDTO> deleteAddressBookData(@PathVariable int id){
         iAddressBookService.deleteAddressBookData(id);

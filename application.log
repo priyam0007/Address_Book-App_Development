@@ -79,3 +79,4 @@ java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
 	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_20]
 
 2022-05-26 15:26:34.455  WARN 8888 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-05-26 15:30:20.890  WARN 14772 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning

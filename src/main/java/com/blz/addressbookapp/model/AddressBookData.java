@@ -9,17 +9,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-@Entity
 @Data
 public class AddressBookData {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private int id;
 
-    private String FName;
+    private String fname;
 
-    private String LName;
+    private String lname;
 
     private String phonenumber;
 
@@ -37,8 +35,8 @@ public class AddressBookData {
 
     public AddressBookData(int id, AddressBookDTO addressBookDTO) {
         this.id = id;
-        this.FName = addressBookDTO.getFName();
-        this.LName = addressBookDTO.getLName();
+        this.fname = addressBookDTO.getFname();
+        this.lname = addressBookDTO.getLname();
         this.phonenumber = addressBookDTO.getPhonenumber();
         this.email = addressBookDTO.getEmail();
         this.city = addressBookDTO.getCity();

@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/addressbook")public class AddressBookController {
+@RequestMapping("/addressbook")
+public class AddressBookController {
 
     @Autowired
     private IAddressBookService iAddressBookService;
 
-    //get addressbook details
     @RequestMapping("/get")
     public ResponseEntity<ResponseDTO> getAddressbookData(){
         List<AddressBookData> addressBookData =iAddressBookService.getAddressBookData();
@@ -26,7 +26,6 @@ import java.util.List;
         return  new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
-    //get addressbook details by id
     @GetMapping("/{id}")
     public ResponseEntity<ResponseDTO> getAddressbookData(@PathVariable int id){
         AddressBookData addressBookData=iAddressBookService.getAddressBookDataById(id);
@@ -34,7 +33,6 @@ import java.util.List;
         return  new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
-    //create addressbook details
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> addAddressBookData(@RequestBody AddressBookDTO addressBookDTO){
         AddressBookData addressBookData=iAddressBookService.createAddressBookData(addressBookDTO);
@@ -42,15 +40,13 @@ import java.util.List;
         return  new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
-    //update addressbook details
-    @PutMapping("/update")
+    @PutMapping("/update/{id}")
     public ResponseEntity<ResponseDTO> updateAddressBookData(@PathVariable int id, @RequestBody AddressBookDTO addressBookDTO){
-        AddressBookData addressBookData=iAddressBookService.updateAddressBookData(id,addressBookDTO);
+        AddressBookData addressBookData = iAddressBookService.updateAddressBookData(id,addressBookDTO);
         ResponseDTO responseDTO=new ResponseDTO("updated Addressbook data succesfully",addressBookData);
         return  new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
 
-    //delete addressbook details by id
     @DeleteMapping("/{id}")
     public ResponseEntity<ResponseDTO> deleteAddressBookData(@PathVariable int id){
         iAddressBookService.deleteAddressBookData(id);

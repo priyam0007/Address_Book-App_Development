@@ -22,7 +22,6 @@ public class AddressBookDTO {
     private String state;
     @Pattern(regexp = "^[1-9]{1}[0-9]{2}\\-{0,1}\\s{0,1}[0-9]{3}$", message = "zipcode pattern is invalid")
     private long zipcode;
-
 }
 
 

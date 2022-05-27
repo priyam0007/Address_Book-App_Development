@@ -3,16 +3,15 @@ package com.blz.addressbookapp.model;
 import com.blz.addressbookapp.dto.AddressBookDTO;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
+@Table(name = "addressBookDetails")
 public class AddressBookData {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "addressBook_id")
     private int id;
 
     private String fname;

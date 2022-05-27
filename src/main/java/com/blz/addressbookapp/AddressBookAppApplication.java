@@ -10,9 +10,9 @@ import org.springframework.context.ApplicationContext;
 public class AddressBookAppApplication {
 
     public static void main(String[] args) {
-        System.out.println("welcome to AddressBookApp development");
         ApplicationContext context=SpringApplication.run(AddressBookAppApplication.class, args);
         log.info("Addressbook started {} environment",context.getEnvironment().getProperty("environment"));
+        System.out.println("welcome to AddressBookApp development");
     }
 }
 

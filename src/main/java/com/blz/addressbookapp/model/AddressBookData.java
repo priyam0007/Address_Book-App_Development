@@ -12,8 +12,6 @@ public class AddressBookData {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "addressBook_id")
-    private int id;
-
     private String fname;
 
     private String lname;
@@ -26,14 +24,10 @@ public class AddressBookData {
 
     private String state;
 
-    private long zipcode;
+    private String zipcode;
 
-    public AddressBookData() {
-
-    }
 
     public AddressBookData(int id, AddressBookDTO addressBookDTO) {
-        this.id = id;
         this.fname = addressBookDTO.getFname();
         this.lname = addressBookDTO.getLname();
         this.phonenumber = addressBookDTO.getPhonenumber();
@@ -41,5 +35,16 @@ public class AddressBookData {
         this.city = addressBookDTO.getCity();
         this.state = addressBookDTO.getState();
         this.zipcode = addressBookDTO.getZipcode();
+
+    }
+
+    public AddressBookData() {
+    }
+
+   public AddressBookData(AddressBookDTO addressBookDTO) {
+
+    }
+    public void updateAddressBookData(AddressBookDTO addressBookDTO) {
+        this.updateAddressBookData(addressBookDTO);
     }
 }

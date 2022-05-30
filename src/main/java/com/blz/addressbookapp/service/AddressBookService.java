@@ -15,21 +15,35 @@ import java.util.List;
 public class AddressBookService implements IAddressBookService {
     @Autowired
     private AddressBookRepository addressBookRepository;
+    @Override
     public List<AddressBookData> getAddressBookData() {
         return addressBookRepository.findAll();
     }
 
     @Override
     public AddressBookData getAddressBookDataById(int id) {
-        return addressBookRepository.findById(id).orElseThrow(()-> new AddressBookException("Exception with id"+id+"does not exist!!"));
+        return addressBookRepository.findById(id)
+                .orElseThrow(()->
+                        new AddressBookException("Exception with id"+id+"does not exist!!"));
     }
+
+    @Override
+    public List<AddressBookData> sortAddressBookByCity() {
+        return addressBookRepository.sortByCity();
+    }
+
+    @Override
+    public List<AddressBookData> sortAddressBookByState() {
+        return addressBookRepository.sortByState();
+    }
+
+
     @Override
     public AddressBookData createAddressBookData(AddressBookDTO addressBookDTO) {
         AddressBookData addressBookData = new AddressBookData(addressBookDTO);
         log.info("AddressBook data:"+addressBookData.toString());
         return addressBookRepository.save(addressBookData);
     }
-
     @Override
     public AddressBookData updateAddressBookData(int id,AddressBookDTO addressBookDTO) {
         AddressBookData addressBookData=this.getAddressBookDataById(id);

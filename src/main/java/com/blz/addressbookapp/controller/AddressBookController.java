@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class AddressBookController {
     private IAddressBookService iAddressBookService;
 
     //get addressbook details
-    @RequestMapping("/get")
+    @RequestMapping ("/get")
     public ResponseEntity<ResponseDTO> getAddressbookData(){
         List<AddressBookData> addressBookData =iAddressBookService.getAddressBookData();
         ResponseDTO responseDTO=new ResponseDTO("Get call Success",addressBookData);
@@ -35,7 +34,22 @@ public class AddressBookController {
         ResponseDTO responseDTO=new ResponseDTO("Get call Success",addressBookData);
         return  new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
-
+    //   To get city in ascending order
+    @GetMapping("/get/sortbycity")
+    public ResponseEntity<ResponseDTO> sortByCity() {
+        List<AddressBookData> addressBookList = null ;
+        addressBookList = iAddressBookService.sortAddressBookByCity();
+        ResponseDTO responseDTO = new ResponseDTO("Sort by city call is successful! ", addressBookList);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
+    //   To get state in ascending order
+    @GetMapping("/get/sortbystate")
+    public ResponseEntity<ResponseDTO> sortByState() {
+        List<AddressBookData> addressBookList = null;
+        addressBookList = iAddressBookService.sortAddressBookByCity();
+        ResponseDTO responseDTO = new ResponseDTO("Sort by state call is successful! ", addressBookList);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
     //create addressbook details by RequestBody
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> addAddressBookData(@Valid @RequestBody AddressBookDTO addressBookDTO){
@@ -59,5 +73,4 @@ public class AddressBookController {
         ResponseDTO responseDTO=new ResponseDTO("deleted succesfully",id);
         return  new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
-
 }

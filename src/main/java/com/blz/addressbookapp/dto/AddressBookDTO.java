@@ -19,8 +19,8 @@ public class AddressBookDTO {
     @NotBlank(message = "city should not be empty")
     private String city;
     @NotBlank(message = "state should not be empty")
-    private String state;
-    @Pattern(regexp = "^[1-9]{1}[0-9]{2}\\-{0,1}\\s{0,1}[0-9]{3}$", message = "zipcode pattern is invalid")
+    public String state;
+    @Pattern(regexp = "^[0-9]{6}$", message = "zipcode pattern is invalid")
     private String zipcode;
 }
 
